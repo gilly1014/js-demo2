@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#top,#bottom{height: 1000px;width: 20px;background: green;}
+			#middle{width: 600px;height: 50px;background: gray;}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script>
+			// 当页面滚动的距离超过middle时  middle一直存在与html的正上方
+			$(function(){
+				var top = $("#middle").offset().top
+				$(window).scroll(function () {
+					if($(window).scrollTop()>=top){
+						$("#middle").css({"position":"fixed","top":"0"})
+					}else{
+						$("#middle").css({"position":"static"})
+					}
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div id="top">
+			
+		</div>
+		<div id="middle">
+			
+		</div>
+		<div id="bottom">
+			
+		</div>
+	</body>
+</html>

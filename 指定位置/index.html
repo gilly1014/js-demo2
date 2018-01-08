@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;	
+			padding: 0;
+		}
+		#container {
+			position: absolute;
+			width: 100%;
+		}
+		div {
+			height: 500px;
+			line-height: 500px;
+			text-align: center;
+		}
+		ul {
+			list-style: none;
+			position: fixed;
+			right: 0;
+			top: 20px;
+		}
+		ul li {
+			width: 50px;
+			height: 50px;
+			background-color: #f40;
+			text-align: center;
+			line-height: 50px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<div>7</div>
+		<div>8</div>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>
+	</div>
+<script src="animate.js"></script>
+<script>
+	var arr = ["white","blue","pink","skyblue","yellowgreen","gary","green","orange"]
+	var container = document.getElementById("container");
+	var boxs = container.getElementsByTagName("div");
+	var lis = document.getElementsByTagName("li");
+
+
+	for(var i = 0; i < lis.length; i++) {
+		boxs[i].style.backgroundColor = arr[i];
+		boxs[i].style.fontSize = "80px";
+
+		lis[i].index = i;
+		lis[i].onclick = function() {
+			var boxTop = boxs[this.index].offsetTop;
+			var boxScroll = window.scroll().top;
+			var target = boxTop - boxScroll;
+
+			animate(container, {"top" : -target})
+		}
+
+	}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.12.3.js"></script>
+    <script>
+        $(function () {
+            var div = $("<img src='img/7.jpg' style='width: 30px;height: 30px;position: absolute;'/>")
+            function randomPos() {
+                var x = parseInt(Math.random() * 800);
+                var y = parseInt(Math.random() * 500);
+                return {left: x, top: y}
+            }
+            var clone = []
+            for (var i = 0; i < 10; i++) {
+                clone[i] = div.clone();
+                clone[i].appendTo("body")
+                console.log(i)
+                clone[i].move = function () {
+                    var self = this;
+                    console.log("move函数"+this);
+                    this.animate(randomPos(), 1000, function () {
+                        console.log("animate函数"+this);
+                        self.move();
+                    })
+                }
+                clone[i].css(randomPos()).move();
+            }
+        })
+    </script>
+</head>
+<body style="width: 100%;height: 100%;background: black;">
+</body>
+</html>
